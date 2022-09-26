@@ -1,0 +1,30 @@
+.nav {
+
+
+  &_list {
+
+    margin-top: 60px;
+    list-style-image: url("https://www.flaticon.com/svg/vstatic/svg/3917/3917014.svg?token=exp=1664205099~hmac=1450755d3b6299c21af5dc1d86bde12f");
+
+    li {
+
+      list-style: none;
+      margin-bottom: 5px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #f4f6f8;
+
+      a {
+        color: #0060B6;
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: #000;
+        cursor: pointer;
+      }
+    }
+  }
+
+
+}

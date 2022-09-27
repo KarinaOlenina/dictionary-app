@@ -1,0 +1,29 @@
+.words-card {
+  font-size: 22px;
+}
+.words-card_list {
+  margin-top: 30px;
+}
+.words-card_list input {
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #9fc5e8;
+  border-radius: 10px;
+  cursor: auto;
+}
+.words-card_list span {
+  display: block;
+  margin: 0 5px 0 5px;
+}
+.words-card_list img {
+  margin-left: 10px;
+}
+.words-card_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Home.css.map */

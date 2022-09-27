@@ -1,0 +1,33 @@
+* {
+  color: #0b5394;
+}
+
+.card_input-form {
+  margin-top: 60px;
+}
+.card_input-form input {
+  display: inline-block;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #9fc5e8;
+  border-radius: 10px;
+}
+.card_input-form input:nth-child(3) {
+  border: 1px solid #ffe599;
+}
+.card_input-form span {
+  display: inline-block;
+  margin: 10px;
+}
+.card_input-form button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 15px 35px;
+  border-radius: 10px;
+  border: none;
+  background-color: #cfe2f3;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=AddWords.css.map */

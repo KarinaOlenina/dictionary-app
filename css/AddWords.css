@@ -2,6 +2,14 @@
   color: #0b5394;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card_title {
+  font-size: 39px;
+}
 .card_input-form {
   margin-top: 60px;
 }

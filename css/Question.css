@@ -1,16 +1,15 @@
 .quest-card {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .quest-card_title {
+  font-size: 30px;
   display: block;
   margin: 20px auto;
-  flex: 0 1 100%;
+  color: #f1c232;
 }
 .quest-card_variant {
-  flex: 0 1 100%;
   display: block;
   margin: 10px 0;
   padding: 10px 15px;
@@ -18,6 +17,7 @@
   border: none;
   background-color: #cfe2f3;
   font-weight: bold;
+  width: 250px;
   cursor: pointer;
 }
 

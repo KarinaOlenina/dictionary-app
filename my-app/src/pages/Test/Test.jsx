@@ -49,27 +49,13 @@ const Test = ({quizModel, map}) => {
                     .catch(() => {
                         alert('Виникла помилка');
                     })
-            }, 5000);
+            }, 1000);
         }
     }
 
-    // useEffect(() => {
-    //
-    //     axios
-    //         .post('http://localhost:3001/results', {value: count})
-    //         .catch(() => {
-    //             alert('Виникла помилка');
-    //         })
-    // }, [count]);
-
-    // console.log(`сч слов=> ${currentQuestion}`);
-    console.log(`сч ответов => ${selectedAnswer}`);
-    // console.log(count)
-
-
     return (
         <div className={'test-card'}>
-            <h1>Повторити слова </h1>
+            <h1 className={'test-card_title'}>Повторити слова </h1>
             <div className={'open-test'}>
                 {!open && (
                     <button
@@ -77,14 +63,14 @@ const Test = ({quizModel, map}) => {
                         onClick={() => setOpen(!open)}>
                         Розпочати</button>
                 )}
-                {open && !showScore &&(
+                {open && !showScore && (
                     <div className={'open-test_question'}>
                         <button
                             className={'butt_back'}
                             onClick={onClose}
                         >Повернутися
                         </button>
-                        <h3>Оберіть правильну відповідь:</h3>
+                        <h2 className={'question_title'}>Оберіть правильну відповідь:</h2>
                         <Question word={Array.from(quizModel.keys())[currentQuestion]}
                                   answers={Array.from(quizModel.values())[currentQuestion]}
                                   correct={map.get(Array.from(quizModel.keys())[currentQuestion])}
@@ -94,9 +80,8 @@ const Test = ({quizModel, map}) => {
                 )}
                 {showScore && (
                     <div className={'open-test_results'}>
-                        <h1>Молодець </h1>
                         <h2>Твій результат</h2>
-                        <p>{`${selectedAnswer * 100 / 10}%`}</p>
+                        <p>{`${selectedAnswer * 10}%`}</p>
                     </div>
                 )}
             </div>

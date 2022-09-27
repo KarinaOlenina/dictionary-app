@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-
 import axios from "axios";
+
+import './Statistic.scss'
 
 const Statistics = () => {
     const [results, setResults] = useState(null);
@@ -27,9 +28,9 @@ const Statistics = () => {
     }
 
     return (
-        <div>
-            <h1>Statistics</h1>
-            <p>{`${(statVal * 10).toFixed(1)}%`}</p>
+        <div className={'stats'}>
+            <h1 className={'stats_title'}>Твоя статистика:</h1>
+            <p className={'stats_percent'}>{`${(statVal * 10).toFixed(1)}%`}</p>
         </div>
     )
 }

@@ -1,21 +1,47 @@
 .test-card {
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &_title {
+    font-size: 40px;
+  }
+
   .open-test {
     .butt_start {
       display: block;
-      margin: 60px auto 0;
+      font-size: 24px;
+      margin: 80px auto 0;
       padding: 15px 35px;
       border-radius: 10px;
       border: none;
       background-color: #cfe2f3;
       font-weight: bold;
       cursor: pointer;
+
+      &:hover {
+        background-color: #fff2cc;
+      }
     }
 
     &_results {
 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       h1 {
         margin: 30px 0;
+      }
+
+      h2 {
+        margin: 30px 0;
+      }
+
+      p {
+        font-weight: bold;
+        font-size: 80px;
       }
     }
   }
@@ -29,8 +55,15 @@
     background-color: #cfe2f3;
     font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+      background-color: #fff2cc;
+    }
   }
 
 
+  .question_title {
+    font-size: 24px;
+  }
 
 }

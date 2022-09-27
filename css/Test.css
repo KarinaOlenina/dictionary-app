@@ -1,6 +1,15 @@
+.test-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.test-card_title {
+  font-size: 40px;
+}
 .test-card .open-test .butt_start {
   display: block;
-  margin: 60px auto 0;
+  font-size: 24px;
+  margin: 80px auto 0;
   padding: 15px 35px;
   border-radius: 10px;
   border: none;
@@ -8,8 +17,23 @@
   font-weight: bold;
   cursor: pointer;
 }
+.test-card .open-test .butt_start:hover {
+  background-color: #fff2cc;
+}
+.test-card .open-test_results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .test-card .open-test_results h1 {
   margin: 30px 0;
+}
+.test-card .open-test_results h2 {
+  margin: 30px 0;
+}
+.test-card .open-test_results p {
+  font-weight: bold;
+  font-size: 80px;
 }
 .test-card .butt_back {
   display: block;
@@ -20,6 +44,12 @@
   background-color: #cfe2f3;
   font-weight: bold;
   cursor: pointer;
+}
+.test-card .butt_back:hover {
+  background-color: #fff2cc;
+}
+.test-card .question_title {
+  font-size: 24px;
 }
 
 /*# sourceMappingURL=Test.css.map */

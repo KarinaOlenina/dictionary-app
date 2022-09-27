@@ -1,0 +1,16 @@
+.stats {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &_title {
+  font-size: 40px;
+  }
+
+  &_percent {
+    margin: 50px 0;
+    font-size: 80px;
+    font-weight: bold;
+  }
+}

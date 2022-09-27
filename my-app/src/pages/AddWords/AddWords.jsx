@@ -16,13 +16,13 @@ const AddWords = ({addWord}) => {
                        onChange={e => {
                            setEngValue(e.target.value)
                        }}
-                       type={'text'} name={'en-word'} placeholder={'Введіть ангійською'}/>
+                       type={'text'} name={'en-word'} placeholder={'Введіть ангійською'} autoComplete={'off'}/>
                 <span>-</span>
                 <input id={'ua-word'}
                        onChange={e => {
                            setUrkValue(e.target.value)
                        }}
-                       type={'text'} name={'ua-word'} placeholder={'Введіть українською'}/>
+                       type={'text'} name={'ua-word'} placeholder={'Введіть українською'} autoComplete={'off'}/>
                 <button type={'submit'} onClick={() => addWord(engValue, ukrValue)}>Зберегти</button>
             </form>
         </div>

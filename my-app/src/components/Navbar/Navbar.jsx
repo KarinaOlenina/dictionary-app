@@ -8,21 +8,21 @@ const Navbar = () => {
 
     return (
         <nav>
-                <div className={'nav'}>
-                    <div className='nav_logo'>
-                        <a href='/'>
-                            <img src={logo} alt={'logo'}>
+            <div className={'nav'}>
+                <div className='nav_logo'>
+                    <a href='/'>
+                        <img src={logo} alt={'logo'}>
 
-                            </img>
-                        </a>
-                    </div>
-                    <ul className={'nav_list'}>
-                        <Link path={'/'} name={'Головна'}/>
-                        <Link path={'/add_words'} name={'Додати слово'}/>
-                        <Link path={'/test'} name={'Перевір себе'}/>
-                        <Link path={'/stats'} name={'Статистика'}/>
-                    </ul>
+                        </img>
+                    </a>
                 </div>
+                <ul className={'nav_list'}>
+                    <Link path={'/'} name={'Головна'}/>
+                    <Link path={'/add_words'} name={'Додати слово'}/>
+                    <Link path={'/test'} name={'Перевір себе'}/>
+                    <Link path={'/stats'} name={'Статистика'}/>
+                </ul>
+            </div>
         </nav>
     )
 }

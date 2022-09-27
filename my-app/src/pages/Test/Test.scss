@@ -1,11 +1,36 @@
 .test-card {
-  button {
+
+  .open-test {
+    .butt_start {
+      display: block;
+      margin: 60px auto 0;
+      padding: 15px 35px;
+      border-radius: 10px;
+      border: none;
+      background-color: #cfe2f3;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    &_results {
+
+      h1 {
+        margin: 30px 0;
+      }
+    }
+  }
+
+  .butt_back {
     display: block;
-    margin: 60px auto 0;
-    padding: 15px 35px;
+    margin: 10px 0 20px auto;
+    padding: 10px 15px;
     border-radius: 10px;
     border: none;
     background-color: #cfe2f3;
     font-weight: bold;
+    cursor: pointer;
   }
+
+
+
 }

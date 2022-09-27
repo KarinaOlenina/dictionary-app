@@ -4,7 +4,7 @@ import './Home.scss'
 import deleteSvg from '../../assets/close.svg'
 
 
-const Home = ({list, onEdit}) => {
+const Home = ({list, onRemove}) => {
 
     // const wordsKey = [];
     // const wordsValue = [];
@@ -56,10 +56,10 @@ const Home = ({list, onEdit}) => {
                                 type={'text'}
                                 name={'input'}
                                 value={`${item[Object.keys(item)[0]]}`}
-                                key={item[Object.keys(item)[0]]}>
+                                key={item.id}>
                             </input>
                             <img
-                                onClick={() => onEdit(item.id, Object.keys(item)[0], item[Object.keys(item)[0]])}
+                                onClick={() => onRemove(item.id)}
                                 src={deleteSvg}
                                 alt="Кнопка редактировать"/>
                         </div>

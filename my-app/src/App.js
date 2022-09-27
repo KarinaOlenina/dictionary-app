@@ -28,35 +28,45 @@ function App() {
 
         axios
             .post('http://localhost:3001/words', obj)
-            .then(r => console.log("Krasava!"));
+            .catch(() => {
+                alert('Не вдалося додати слово');
+            })
     }
 
-    const onEditList = (id, key, value) => {
-        // const newTaskText = window.prompt('Текст задачи', `${key} - ${value}`);
-        // console.log(`${key} - ${value}`);
-        // // console.log(lists)
-        //
-        // if (!newTaskText) {
-        //     return;
-        // }
-        //
-        // const newItem = lists.map(item => {
-        //     if (Object.keys(item)[1] === key) {
-        //         item[key] = newTaskText;
-        //     }
-        //     return item;
-        // });
-        // const itemKey = Object.keys(newItem)[1];
-        // setLists(lists);
+    const onRemoveWord = (id) => {
 
         const newList = lists.filter(item => item.id !== id);
         axios
             .delete('http://localhost:3001/words/' + id)
             .catch(() => {
-                alert('Can\'t delete word!');
+                alert('Не вдалося видалити слово');
             });
         setLists(newList);
     };
+
+    let map;
+    if (lists) {
+        const shuffled = lists.sort(() => 0.5 - Math.random());
+        let selectedQuest = shuffled.slice(0, Math.min(shuffled.length, 10));
+
+        map = new Map();
+        for (let pair of selectedQuest) {
+            map.set(Object.keys(pair)[0], Object.values(pair)[0]);
+        }
+    }
+
+    let quizModel;
+    if (map) {
+        quizModel = new Map();
+        for (let mapElement of map.entries()) {
+            let allAnswersList = Array.from(map.values())
+                .filter(val => val !== mapElement[1])
+                .sort(() => 0.5 - Math.random());
+            let answers = [mapElement[1], ...allAnswersList.slice(0, 3)];
+            quizModel.set(mapElement[0], answers.sort(() => 0.5 - Math.random()));
+        }
+        // console.log(quizModel);
+    }
 
     return (
         <div className="App">
@@ -67,9 +77,9 @@ function App() {
                     </div>
                     <div className={'dictionary__interactive'}>
                         <Routes>
-                            <Route path='/' element={<Home onEdit={onEditList} list={lists}/>}/>
+                            <Route path='/' element={<Home onRemove={onRemoveWord} list={lists}/>}/>
                             <Route path='/add_words' element={<AddWords addWord={onAddWord}/>}/>
-                            <Route path='/test' element={<Test/>}/>
+                            <Route path='/test' element={<Test map={map} quizModel={quizModel} list={lists}/>}/>
                             <Route path='/stats' element={<Statistics/>}/>
                         </Routes>
                     </div>

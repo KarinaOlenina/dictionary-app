@@ -3,12 +3,22 @@ import React, {useState} from "react";
 import './Test.scss'
 import Question from "./Question";
 
+import {useDispatch, useSelector} from "react-redux";
+import {stats} from "../../redux/reducers/stats";
+import axios from "axios";
+
+
 const Test = ({quizModel, map}) => {
+
 
     const [open, setOpen] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(0);
     const [showScore, setShowScore] = useState(false);
+
+    const count = useSelector((state) => state.stats.value);
+
+    const dispatch = useDispatch()
 
     const onClose = () => {
         const ask = window.confirm('Ви впевнені, що хочете закрити тест?');
@@ -22,19 +32,40 @@ const Test = ({quizModel, map}) => {
         const nextQuestion = currentQuestion + 1;
         const mapSize = map && map.size;
 
-        if (nextQuestion < mapSize) {
-            setCurrentQuestion(nextQuestion);
-        } else {
-            setShowScore(!showScore)
-        }
-
         if (elem === correct) {
             setSelectedAnswer(selectedAnswer + 1);
         }
+
+        if (nextQuestion < mapSize) {
+            setCurrentQuestion(nextQuestion);
+        } else {
+            setShowScore(!showScore);
+            dispatch(stats.actions.result(selectedAnswer));
+
+            setTimeout(() => {
+                axios
+                    .post('http://localhost:3001/results', {value: selectedAnswer})
+                    .then(r => console.log(r.status))
+                    .catch(() => {
+                        alert('Виникла помилка');
+                    })
+            }, 5000);
+        }
     }
 
-    console.log(`сч слов=> ${currentQuestion}`);
+    // useEffect(() => {
+    //
+    //     axios
+    //         .post('http://localhost:3001/results', {value: count})
+    //         .catch(() => {
+    //             alert('Виникла помилка');
+    //         })
+    // }, [count]);
+
+    // console.log(`сч слов=> ${currentQuestion}`);
     console.log(`сч ответов => ${selectedAnswer}`);
+    // console.log(count)
+
 
     return (
         <div className={'test-card'}>
@@ -69,7 +100,6 @@ const Test = ({quizModel, map}) => {
                     </div>
                 )}
             </div>
-
         </div>
 
     )

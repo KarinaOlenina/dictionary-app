@@ -9,12 +9,13 @@
     li {
 
       list-style: none;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 10px;
-      background-color: #f4f6f8;
 
       a {
+        display: block;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #f4f6f8;
         color: #0060B6;
         text-decoration: none;
       }

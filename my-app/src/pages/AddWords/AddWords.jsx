@@ -6,8 +6,6 @@ const AddWords = ({addWord}) => {
     const [engValue, setEngValue] = useState('');
     const [ukrValue, setUrkValue] = useState('');
 
-    console.log(engValue + " - " + ukrValue);
-
     return (
         <div className={'card'}>
             <h1 className={'card_title'}>Додайте нове слово</h1>

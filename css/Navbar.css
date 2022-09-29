@@ -4,12 +4,13 @@
 }
 .nav_list li {
   list-style: none;
-  margin-bottom: 5px;
+}
+.nav_list li a {
+  display: block;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   background-color: #f4f6f8;
-}
-.nav_list li a {
   color: #0060B6;
   text-decoration: none;
 }

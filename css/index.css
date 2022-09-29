@@ -47,11 +47,19 @@ body {
   padding: 60px;
   overflow: hidden;
   overflow-y: auto;
-  background-color: #f4f6f8;
+  background-image: url("../src/assets/img.jpg");
+  background-size: cover;
 }
 
 button:hover {
   background-color: #fff2cc;
+}
+button:active {
+  background-color: #ffe596;
+}
+
+h1, h2, p {
+  color: white;
 }
 
 /*# sourceMappingURL=index.css.map */

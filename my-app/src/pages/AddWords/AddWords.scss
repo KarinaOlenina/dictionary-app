@@ -44,6 +44,10 @@
       background-color: #cfe2f3;
       font-weight: bold;
       cursor: pointer;
+
+      &:active {
+        background-color: #ffe596;
+      }
     }
   }
 }

@@ -66,7 +66,6 @@ function App() {
             let answers = [mapElement[1], ...allAnswersList.slice(0, 3)];
             quizModel.set(mapElement[0], answers.sort(() => 0.5 - Math.random()));
         }
-        // console.log(quizModel);
     }
 
     return (

@@ -1,9 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit'
-import counterReducer from './reducers/stats'
+import currentAnswer from './reducers/currentAnswer'
+import openQuestion from "./reducers/openQuestion";
+import currentQuestion from "./reducers/currentQuestion";
+import showScore from "./reducers/showScore";
 
 export const store = configureStore({
     reducer: {
-        stats: counterReducer,
+        currentAnswer: currentAnswer,
+        openQuestion: openQuestion,
+        currentQuestion: currentQuestion,
+        showScore: showScore
     },
 
 })

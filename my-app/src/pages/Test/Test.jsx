@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import axios from "axios";
 
 import './Test.scss'
@@ -8,16 +8,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {currentAnswer} from "../../redux/reducers/currentAnswer";
 import {openQuestion} from "../../redux/reducers/openQuestion";
 import {currentQuestions} from "../../redux/reducers/currentQuestion";
-
-
+import {showScore} from "../../redux/reducers/showScore";
 
 const Test = ({quizModel, map}) => {
-
-    const [showScore, setShowScore] = useState(false);
 
     const rightAnswers = useSelector((state) => state.currentAnswer.value);
     const IsOpen = useSelector((state) => state.openQuestion.value);
     const currentQuestion = useSelector((state) => state.currentQuestion.value);
+    const show = useSelector((state) => state.showScore.value);
 
     const dispatch = useDispatch()
 
@@ -29,18 +27,16 @@ const Test = ({quizModel, map}) => {
     }
 
     const onClick = (elem, correct) => {
-
         const nextQuestion = currentQuestion + 1;
         const mapSize = map && map.size;
 
         if (elem === correct) {
             dispatch(currentAnswer.actions.result(1));
         }
-
         if (nextQuestion < mapSize) {
             dispatch(currentQuestions.actions.result(1));
         } else {
-            setShowScore(!showScore);
+            dispatch(showScore.actions.result(!show));
 
             setTimeout(() => {
                 axios
@@ -63,7 +59,7 @@ const Test = ({quizModel, map}) => {
                         onClick={() => dispatch(openQuestion.actions.result(!IsOpen))}>
                         Розпочати</button>
                 )}
-                {IsOpen && !showScore && (
+                {IsOpen && !show && (
                     <div className={'open-test_question'}>
                         <button
                             className={'butt_back'}
@@ -74,11 +70,10 @@ const Test = ({quizModel, map}) => {
                         <Question word={Array.from(quizModel.keys())[currentQuestion]}
                                   answers={Array.from(quizModel.values())[currentQuestion]}
                                   correct={map.get(Array.from(quizModel.keys())[currentQuestion])}
-                                  onClick={onClick}
-                        />
+                                  onClick={onClick}/>
                     </div>
                 )}
-                {showScore && (
+                {show && (
                     <div className={'open-test_results'}>
                         <h2>Твій результат</h2>
                         <p>{`${rightAnswers * 10}%`}</p>

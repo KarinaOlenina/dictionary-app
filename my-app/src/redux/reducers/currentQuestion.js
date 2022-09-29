@@ -14,7 +14,6 @@ export const currentQuestions = createSlice({
     },
 })
 
-// Action creators are generated for each case reducer function
 export const {result} = currentQuestions.actions
 
 export default currentQuestions.reducer

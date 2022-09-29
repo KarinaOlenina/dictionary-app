@@ -14,6 +14,7 @@ const Statistics = () => {
             });
     }, []);
 
+
     let statVal;
     if (results) {
         let sum = 0;

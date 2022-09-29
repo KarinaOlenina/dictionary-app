@@ -4,8 +4,8 @@ const initialState = {
     value: false,
 }
 
-export const openQuestion = createSlice({
-    name: 'openQuestion',
+export const showScore = createSlice({
+    name: 'showScore',
     initialState,
     reducers: {
         result: (state, {payload}) => {
@@ -14,6 +14,6 @@ export const openQuestion = createSlice({
     },
 })
 
-export const {result} = openQuestion.actions
+export const {result} = showScore.actions;
 
-export default openQuestion.reducer
+export default showScore.reducer;

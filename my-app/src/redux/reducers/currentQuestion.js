@@ -4,8 +4,8 @@ const initialState = {
     value: 0,
 }
 
-export const stats = createSlice({
-    name: 'stats',
+export const currentQuestions = createSlice({
+    name: 'currentQuestions',
     initialState,
     reducers: {
         result: (state, {payload}) => {
@@ -15,6 +15,6 @@ export const stats = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {result} = stats.actions
+export const {result} = currentQuestions.actions
 
-export default stats.reducer
+export default currentQuestions.reducer

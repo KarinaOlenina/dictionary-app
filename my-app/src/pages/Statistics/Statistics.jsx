@@ -16,7 +16,6 @@ const Statistics = () => {
 
     let statVal;
     if (results) {
-        console.log(results)
         let sum = 0;
         for (let result of results) {
             sum += Object.values(result)[0];

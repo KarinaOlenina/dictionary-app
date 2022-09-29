@@ -1,28 +1,30 @@
 import React, {useState} from "react";
+import axios from "axios";
 
 import './Test.scss'
 import Question from "./Question";
 
 import {useDispatch, useSelector} from "react-redux";
 import {currentAnswer} from "../../redux/reducers/currentAnswer";
-import axios from "axios";
+import {openQuestion} from "../../redux/reducers/openQuestion";
+import {currentQuestions} from "../../redux/reducers/currentQuestion";
+
 
 
 const Test = ({quizModel, map}) => {
 
-
-    const [open, setOpen] = useState(false);
-    const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
 
-    const currentAnswers = useSelector((state) => state.currentAnswer.value);
+    const rightAnswers = useSelector((state) => state.currentAnswer.value);
+    const IsOpen = useSelector((state) => state.openQuestion.value);
+    const currentQuestion = useSelector((state) => state.currentQuestion.value);
 
     const dispatch = useDispatch()
 
     const onClose = () => {
         const ask = window.confirm('Ви впевнені, що хочете закрити тест?');
         if (ask) {
-            setOpen(!open)
+            dispatch(openQuestion.actions.result(!IsOpen));
         }
     }
 
@@ -36,13 +38,13 @@ const Test = ({quizModel, map}) => {
         }
 
         if (nextQuestion < mapSize) {
-            setCurrentQuestion(nextQuestion);
+            dispatch(currentQuestions.actions.result(1));
         } else {
             setShowScore(!showScore);
 
             setTimeout(() => {
                 axios
-                    .post('http://localhost:3001/results', {value: currentAnswers})
+                    .post('http://localhost:3001/results', {value: rightAnswers})
                     .then(r => console.log(r.status))
                     .catch(() => {
                         alert('Виникла помилка');
@@ -55,13 +57,13 @@ const Test = ({quizModel, map}) => {
         <div className={'test-card'}>
             <h1 className={'test-card_title'}>Повторити слова </h1>
             <div className={'open-test'}>
-                {!open && (
+                {!IsOpen && (
                     <button
                         className={'butt_start'}
-                        onClick={() => setOpen(!open)}>
+                        onClick={() => dispatch(openQuestion.actions.result(!IsOpen))}>
                         Розпочати</button>
                 )}
-                {open && !showScore && (
+                {IsOpen && !showScore && (
                     <div className={'open-test_question'}>
                         <button
                             className={'butt_back'}
@@ -79,7 +81,7 @@ const Test = ({quizModel, map}) => {
                 {showScore && (
                     <div className={'open-test_results'}>
                         <h2>Твій результат</h2>
-                        <p>{`${currentAnswers * 10}%`}</p>
+                        <p>{`${rightAnswers * 10}%`}</p>
                     </div>
                 )}
             </div>

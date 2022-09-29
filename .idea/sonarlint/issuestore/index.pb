@@ -49,12 +49,8 @@ A
 my-app/.gitignore,c\8\c8ab888dbbe8636ccd9f8daa3b3183e033677d52
 A
 my-app/src/App.js,f\c\fca52cdb2f41557f7d01cf0a3ca185d572f2f4dc
-O
-my-app/src/redux/rootReducer.js,a\1\a1de993a2b5ffaee4c0841063af9bec9e8eaebb0
 C
 my-app/src/index.js,9\d\9d3cc0dbc741a87ffcac90eaa25744530f660b13
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 @
 css/AddWords.css,1\8\1881fac8dff0fb6b0197b4d3f33f3433313b9974
 A
@@ -75,21 +71,11 @@ E
 my-app/src/index.scss,2\a\2a7b4d073056b15e233482b262e55d6b99ab115d
 @
 css/Home.css.map,d\7\d74a93b21facf341c8b6370f08d21985cb7e3954
-A
-css/Statistic.css,5\a\5a389eb58c386be0d97895d53de7a4212e4179e9
 O
 my-app/src/pages/Test/Test.scss,c\7\c76e3b14486e52efb479d63c974a0490aff12f54
 O
 my-app/src/pages/Home/Home.scss,7\2\72efaacc984fc1d9e63fcffd08ba12991f10b4b3
 @
 css/Test.css.map,7\6\76450f23786e3d33653dbb51c151dc2402ec18a9
->
-my-app/db.json,0\5\05586b51fdb5c7e7a442a5f15611387ae443ec9f
-V
-&my-app/src/pages/AddWords/AddWords.jsx,3\a\3a167d8a65ae144a05094ccbcfa5a613b30f4a3b
-N
-my-app/src/pages/Home/Home.jsx,e\8\e877c79c45bcd4fd7699c5523fc172f16b4b0ede
 Z
 *my-app/src/pages/Statistics/Statistics.jsx,1\6\16453c7a04e1137167dfaca7e0fc746e2a641bc9
-N
-my-app/src/pages/Test/Test.jsx,4\0\40300a3b8c2fcf64eeafb966a2975f84766fd55a

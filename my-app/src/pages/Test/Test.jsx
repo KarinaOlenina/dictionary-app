@@ -4,7 +4,7 @@ import './Test.scss'
 import Question from "./Question";
 
 import {useDispatch, useSelector} from "react-redux";
-import {stats} from "../../redux/reducers/stats";
+import {currentAnswer} from "../../redux/reducers/currentAnswer";
 import axios from "axios";
 
 
@@ -13,10 +13,9 @@ const Test = ({quizModel, map}) => {
 
     const [open, setOpen] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [selectedAnswer, setSelectedAnswer] = useState(0);
     const [showScore, setShowScore] = useState(false);
 
-    const count = useSelector((state) => state.stats.value);
+    const currentAnswers = useSelector((state) => state.currentAnswer.value);
 
     const dispatch = useDispatch()
 
@@ -33,18 +32,17 @@ const Test = ({quizModel, map}) => {
         const mapSize = map && map.size;
 
         if (elem === correct) {
-            setSelectedAnswer(selectedAnswer + 1);
+            dispatch(currentAnswer.actions.result(1));
         }
 
         if (nextQuestion < mapSize) {
             setCurrentQuestion(nextQuestion);
         } else {
             setShowScore(!showScore);
-            dispatch(stats.actions.result(selectedAnswer));
 
             setTimeout(() => {
                 axios
-                    .post('http://localhost:3001/results', {value: selectedAnswer})
+                    .post('http://localhost:3001/results', {value: currentAnswers})
                     .then(r => console.log(r.status))
                     .catch(() => {
                         alert('Виникла помилка');
@@ -81,7 +79,7 @@ const Test = ({quizModel, map}) => {
                 {showScore && (
                     <div className={'open-test_results'}>
                         <h2>Твій результат</h2>
-                        <p>{`${selectedAnswer * 10}%`}</p>
+                        <p>{`${currentAnswers * 10}%`}</p>
                     </div>
                 )}
             </div>

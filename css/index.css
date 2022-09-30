@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -47,8 +48,16 @@ body {
   padding: 60px;
   overflow: hidden;
   overflow-y: auto;
+  border-radius: 0 10px 10px 0;
   background-image: url("../src/assets/img.jpg");
   background-size: cover;
+  /* Скрываем scrollbar для Chrome, Safari и Opera */
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+  /* Скрываем scrollbar для IE, Edge и Firefox */
+}
+.dictionary__interactive::-webkit-scrollbar {
+  display: none;
 }
 
 button:hover {

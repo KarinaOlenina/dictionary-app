@@ -50,10 +50,18 @@ body {
     padding: 60px;
     overflow: hidden;
     overflow-y: auto;
-    //background-color: #f4f6f8;
+    border-radius: 0 10px 10px 0;
     background-image: url('../src/assets/img.jpg');
     background-size: cover;
 
+    /* Скрываем scrollbar для Chrome, Safari и Opera */
+    -ms-overflow-style: none;  /* IE и Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    /* Скрываем scrollbar для IE, Edge и Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
 }

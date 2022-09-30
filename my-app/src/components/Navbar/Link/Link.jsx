@@ -1,13 +1,13 @@
 import React from "react";
 
-import './Link.scss';
+import {Link} from "react-router-dom";
 
-const Link = ({path, name}) => {
+const Links = ({path, name}) => {
 
 
     return (
-        <li><a className={'nav_link'} href={path}>{name}</a></li>
+        <li><Link className={'nav_link'} to={path}>{name}</Link></li>
     )
 }
 
-export default Link;
+export default Links;

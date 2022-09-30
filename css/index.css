@@ -47,6 +47,7 @@ body {
   padding: 60px;
   overflow: hidden;
   overflow-y: auto;
+  border-radius: 0 10px 10px 0;
   background-image: url("../src/assets/img.jpg");
   background-size: cover;
 }

@@ -1,0 +1,77 @@
+.nav {
+
+  &_logo__pink-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #FDB3FF;
+    border-radius: 50%;
+  }
+
+  &_list {
+
+    margin-top: 30px;
+  }
+
+  .nav_link {
+    list-style: none;
+    cursor: pointer;
+
+    &:first-child a {
+      display: block;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 15px;
+      background-color: #FCEFFC;
+      color: #FB3AFF;
+      text-decoration: none;
+
+      &:hover {
+        border-radius: 15px;
+        background-color: #FFCDFF;
+        transition: background-color 0.3s, color 0.3s;
+      }
+    }
+
+    &:not(:first-child) a {
+      display: block;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 15px;
+      color: #5F5F5F;
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: #F5F5F5;
+      transition: background-color 0.3s, color 0.3s;
+      border-radius: 15px;
+    }
+
+    &__selected {
+         list-style: none;
+         cursor: pointer;
+
+         &:first-child a {
+           display: block;
+           margin-top: 20px;
+           padding: 15px;
+           color: #FB3AFF;
+           text-decoration: none;
+           border-radius: 15px;
+           background-color: #FFCDFF;
+           transition: background-color 0.3s, color 0.3s;
+         }
+
+         &:not(:first-child) a {
+           display: block;
+           margin-top: 20px;
+           padding: 15px;
+           color: #5F5F5F;
+           text-decoration: none;
+           background-color: #F5F5F5;
+           transition: background-color 0.3s, color 0.3s;
+           border-radius: 15px;
+         }
+       }
+  }
+}

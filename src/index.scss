@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  font-family: 'Roboto', -apple-system, sistem-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+@keyframes opacity02 {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  background-color: #fff;
+}
+
+.dictionary {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 760px;
+  max-width: 900px;
+  height: 90%;
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  transform: translate(-50%, -50%);
+  box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+
+  &__sidebar {
+    background-color: #fff;
+    width: 200px;
+    border-right: 1px solid #f1f1f1;
+    border-radius: 10px 0 0 10px;
+    padding: 40px 20px 5px 20px;
+  }
+
+  &__interactive {
+    flex: 1;
+    padding: 30px;
+    margin: 10px 0 10px 0;
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: 0 10px 10px 0;
+    background: #F7F7F7;
+    background-size: cover;
+
+    /* Скрываем scrollbar для Chrome, Safari и Opera */
+    -ms-overflow-style: none;  /* IE и Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    /* Скрываем scrollbar для IE, Edge и Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+}
+
+.title {
+  color: #2F2F2F;
+  font-size: 32px;
+}
+
+.arrow__svg {
+  width: 1.5rem;
+}
+
+button {
+
+  &:hover {
+    background-color: #fff2cc;
+  }
+
+  &:active {
+    background-color: #ffe596;
+  }
+}
+
+.button__pink-gradient {
+  display: block;
+  margin: 30px auto 0;
+  padding: 15px 35px;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  background: rgb(255,2,200);
+  background: linear-gradient(90deg, rgba(255,2,200,1) 35%, rgba(255,158,251,1) 100%);
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.5s, background 0.5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    background-color: #ffe596;
+  }
+}
+

@@ -1,0 +1,59 @@
+.quest-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  &_title {
+    font-size: 30px;
+    display: block;
+    margin: 20px auto;
+    color: #f1c232;
+  }
+
+  &_variant {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #cfe2f3;
+    font-weight: bold;
+    width: 250px;
+    cursor: pointer;
+  }
+
+  .main-word {
+    width: 45%;
+
+    input {
+      color: #FB3AFF;
+      border: 1px solid #FEE0FF;
+    }
+  }
+
+  .answer-words {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    input {
+      cursor: pointer;
+
+      &:hover {
+        color: #FB3AFF;
+        background: #FCEFFC;
+        border: 1px solid #FEE0FF;
+        transition: transform 0.3s, background-color 0.3s, color 0.3s;
+      }
+
+      &:active {
+        color:  darken(#FB3AFF, 10%);
+        background:  darken(#FCEFFC, 10%);
+        border: 1px solid #FEE0FF;
+        transition: transform 0.3s, background-color 0.3s, color 0.3s;
+      }
+    }
+  }
+}

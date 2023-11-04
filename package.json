@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "json-server": "json-server --watch C:\\Users\\uaole\\WebstormProjects\\dictionary-app\\db.json --port 3001",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

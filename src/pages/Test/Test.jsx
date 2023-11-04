@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 
 import './Test.scss'
-import Question from "./Question";
+import Question from "../../components/Question/Question";
 
 import {useDispatch, useSelector} from "react-redux";
 import {currentAnswer} from "../../redux/reducers/currentAnswer";
@@ -10,6 +10,7 @@ import {openQuestion} from "../../redux/reducers/openQuestion";
 import {currentQuestions} from "../../redux/reducers/currentQuestion";
 import {showScore} from "../../redux/reducers/showScore";
 import arrowBack from "../../assets/arrow-back.svg";
+import FlipCard from "../../components/FlipCard/FlipCard";
 
 const Test = ({quizModel, map}) => {
 
@@ -72,10 +73,10 @@ const Test = ({quizModel, map}) => {
                                 onClick={() => setMode("PAIRS")} >
                                 PAIRS
                             </button>
-                            <button className={mode === 'FLASHCARD' ? 'mode_item selected' : 'mode_item'}
-                                 onClick={() => setMode("FLASHCARD")}
+                            <button className={mode === 'FLIPCARD' ? 'mode_item selected' : 'mode_item'}
+                                 onClick={() => setMode("FLIPCARD")}
                             >
-                                FLASHCARD
+                                FLIPCARD
                             </button>
                         </div>
                         <button
@@ -96,6 +97,11 @@ const Test = ({quizModel, map}) => {
                                       answers={Array.from(quizModel.values())[currentQuestion]}
                                       correct={map.get(Array.from(quizModel.keys())[currentQuestion])}
                                       onClick={onClick}/>
+                        )}
+                        {mode === "FLIPCARD" && (
+                            <FlipCard word={Array.from(quizModel.keys())[currentQuestion]}
+                                      correct={map.get(Array.from(quizModel.keys())[currentQuestion])}
+                                      onClick={() => console.log("FLIPCARD")}/>
                         )}
                     </div>
                 )}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import './Question.scss'
-import WordInput from "../../components/WordInput/WordInput";
+import WordInput from "../WordInput/WordInput";
 import Arrow from "../../assets/Arrow.svg";
 
 const Question = ({word, answers, correct, onClick}) => {

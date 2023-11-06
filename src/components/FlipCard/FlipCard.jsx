@@ -1,39 +1,44 @@
 import React, { useState } from "react";
 import './FlipCard.scss'
-import axios from "axios";
+import {currentAnswer} from "../../redux/reducers/currentAnswer";
+import {useDispatch, useSelector} from "react-redux";
+import getNextWorld from "../../utils/getNextWorld";
 
-const FlipCard = ({ word, correct, onClick }) => {
+const FlipCard = ({ word, correct, map }) => {
     const [isFlipped, setIsFlipped] = useState(false);
-    const [knowCount, setKnowCount] = useState(0);
+    const show = useSelector((state) => state.showScore.value);
+    const dispatch = useDispatch();
 
-    const handleKnowClick = () => {
-        setKnowCount(knowCount + 1);
-    };
+    const { value: rightAnswers } = useSelector((state) => state.currentAnswer);
+    const { value: currentQuestion } = useSelector((state) => state.currentQuestion);
+    const nextQuestion = currentQuestion + 1;
+    const mapSize = map?.size;
 
-    const handleDontKnowClick = () => {
-        // Можете також виконати необхідні дії, коли користувач відмовляється від слова.
+    const handleAnswerClick = (isKnown) => {
+        if (isKnown) {
+            dispatch(currentAnswer.actions.result(1));
+        }
+
+        getNextWorld(nextQuestion, mapSize, dispatch, show, rightAnswers);
     };
 
     return (
         <div className="flip-card_container">
-            <div className={`flip-card ${isFlipped ? "flipped" : ""}`}
-                 onClick={() => setIsFlipped(!isFlipped)}>
-                <div className="flipcard-front" >
+            <div className={`flip-card ${isFlipped ? "flipped" : ""}`} onClick={() => setIsFlipped(!isFlipped)}>
+                <div className="flipcard-front">
                     {word}
                 </div>
-                <div className="flipcard-back" >
+                <div className="flipcard-back">
                     {correct}
                 </div>
             </div>
             <div className="know-buttons">
-                <button onClick={handleKnowClick}>I know</button>
-                <button onClick={handleDontKnowClick}>I don't know</button>
-            </div>
-            <div className="next-button">
-                <button onClick={() => onClick(knowCount)}>Next --></button>
+                <button onClick={() => handleAnswerClick(true)}>I know</button>
+                <button onClick={() => handleAnswerClick(false)}>I don't know</button>
             </div>
         </div>
     );
 };
+
 
 export default FlipCard;

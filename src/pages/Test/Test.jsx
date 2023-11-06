@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 import './Test.scss'
@@ -12,7 +12,7 @@ import {showScore} from "../../redux/reducers/showScore";
 import arrowBack from "../../assets/arrow-back.svg";
 import FlipCard from "../../components/FlipCard/FlipCard";
 
-const Test = ({quizModel, map}) => {
+const Test = ({list}) => {
 
     const rightAnswers = useSelector((state) => state.currentAnswer.value);
     const IsOpen = useSelector((state) => state.openQuestion.value);
@@ -20,12 +20,42 @@ const Test = ({quizModel, map}) => {
     const show = useSelector((state) => state.showScore.value);
     const [mode, setMode] = useState("PAIRS");
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    const [map, setMap] = useState(null);
+    const [quizModel, setQuizModel] = useState(null);
+
+    useEffect(() => {
+        if (list) {
+            const shuffled = list.sort(() => 0.5 - Math.random());
+            let selectedQuest = shuffled.slice(0, Math.min(shuffled.length, 10));
+
+            const newMap = new Map();
+            for (let pair of selectedQuest) {
+                newMap.set(Object.keys(pair)[0], Object.values(pair)[0]);
+            }
+            setMap(newMap);
+
+            const newQuizModel = new Map();
+            for (let mapElement of newMap.entries()) {
+                let allAnswersList = Array.from(newMap.values())
+                    .filter(val => val !== mapElement[1])
+                    .sort(() => 0.5 - Math.random());
+                let answers = [mapElement[1], ...allAnswersList.slice(0, 3)];
+                newQuizModel.set(mapElement[0], answers.sort(() => 0.5 - Math.random()));
+            }
+            setQuizModel(newQuizModel);
+        }
+    }, [list, IsOpen]);
+
+    console.log(quizModel);
+    console.log(map);
 
     const onClose = () => {
 
         if (show) {
             dispatch(currentQuestions.actions.resetResult());
+            dispatch(currentAnswer.actions.resetResult());
             dispatch(showScore.actions.result(false));
             dispatch(openQuestion.actions.result(false));
             return;
@@ -36,30 +66,30 @@ const Test = ({quizModel, map}) => {
         }
     }
 
-    const onClick = (elem, correct) => {
-        const nextQuestion = currentQuestion + 1;
-        const mapSize = map && map.size;
-
-        console.log('nextQuestion', nextQuestion)
-
-        if (elem === correct) {
-            dispatch(currentAnswer.actions.result(1));
-        }
-        if (nextQuestion < mapSize) {
-            dispatch(currentQuestions.actions.result(1));
-        } else {
-            dispatch(showScore.actions.result(!show));
-
-            setTimeout(() => {
-                axios
-                    .post('http://localhost:3001/results', {value: rightAnswers})
-                    .then(r => console.log(r.status))
-                    .catch(() => {
-                        alert('An error occurred');
-                    })
-            }, 1000);
-        }
-    }
+    // const onClick = (elem, correct) => {
+    //     const nextQuestion = currentQuestion + 1;
+    //     const mapSize = map && map.size;
+    //
+    //     console.log('nextQuestion', nextQuestion)
+    //
+    //     if (elem === correct) {
+    //         dispatch(currentAnswer.actions.result(1));
+    //     }
+    //     if (nextQuestion < mapSize) {
+    //         dispatch(currentQuestions.actions.result(1));
+    //     } else {
+    //         dispatch(showScore.actions.result(!show));
+    //
+    //         setTimeout(() => {
+    //             axios
+    //                 .post('http://localhost:3001/results', {value: rightAnswers})
+    //                 .then(r => console.log(r.status))
+    //                 .catch(() => {
+    //                     alert('An error occurred');
+    //                 })
+    //         }, 1000);
+    //     }
+    // }
 
     return (
         <div className={'test-card'}>
@@ -96,12 +126,13 @@ const Test = ({quizModel, map}) => {
                             <Question word={Array.from(quizModel.keys())[currentQuestion]}
                                       answers={Array.from(quizModel.values())[currentQuestion]}
                                       correct={map.get(Array.from(quizModel.keys())[currentQuestion])}
-                                      onClick={onClick}/>
+                                      map={map}/>
                         )}
                         {mode === "FLIPCARD" && (
                             <FlipCard word={Array.from(quizModel.keys())[currentQuestion]}
                                       correct={map.get(Array.from(quizModel.keys())[currentQuestion])}
-                                      onClick={() => console.log("FLIPCARD")}/>
+                                      onClick={() => console.log("FLIPCARD")}
+                                      map={map}/>
                         )}
                     </div>
                 )}

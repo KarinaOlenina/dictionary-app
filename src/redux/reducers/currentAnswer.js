@@ -11,6 +11,9 @@ export const currentAnswer = createSlice({
         result: (state, {payload}) => {
             state.value += payload
         },
+        resetResult: (state) => {
+            state.value = 0;
+        },
     },
 })
 

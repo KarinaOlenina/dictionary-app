@@ -44,29 +44,6 @@ function App() {
         setLists(newList);
     };
 
-    let map;
-    if (lists) {
-        const shuffled = lists.sort(() => 0.5 - Math.random());
-        let selectedQuest = shuffled.slice(0, Math.min(shuffled.length, 10));
-
-        map = new Map();
-        for (let pair of selectedQuest) {
-            map.set(Object.keys(pair)[0], Object.values(pair)[0]);
-        }
-    }
-
-    let quizModel;
-    if (map) {
-        quizModel = new Map();
-        for (let mapElement of map.entries()) {
-            let allAnswersList = Array.from(map.values())
-                .filter(val => val !== mapElement[1])
-                .sort(() => 0.5 - Math.random());
-            let answers = [mapElement[1], ...allAnswersList.slice(0, 3)];
-            quizModel.set(mapElement[0], answers.sort(() => 0.5 - Math.random()));
-        }
-    }
-
     return (
         <div className="App">
             <div className="wrap">
@@ -78,7 +55,7 @@ function App() {
                         <Routes>
                             <Route path='/' element={<Home onRemove={onRemoveWord} list={lists}/>}/>
                             <Route path='/add_words' element={<AddWords addWord={onAddWord}/>}/>
-                            <Route path='/test' element={<Test map={map} quizModel={quizModel} list={lists}/>}/>
+                            <Route path='/test' element={<Test list={lists}/>}/>
                             <Route path='/stats' element={<Statistics/>}/>
                         </Routes>
                     </div>

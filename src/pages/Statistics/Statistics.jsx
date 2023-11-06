@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 import './Statistic.scss'
+import axios from "axios";
+import DonutChart from "../../components/DonutChart/DonutChart";
 
 const Statistics = () => {
     const [results, setResults] = useState(null);
@@ -15,22 +16,23 @@ const Statistics = () => {
     }, []);
 
 
-    let statVal;
+    let statusValue;
     if (results) {
         let sum = 0;
         for (let result of results) {
             sum += Object.values(result)[0];
         }
 
-        statVal = sum / results.length;
+        statusValue = sum / results.length;
     } else {
-        statVal = 0;
+        statusValue = 0;
     }
+    let statistic = (statusValue * 10).toFixed(1);
 
     return (
         <div className={'stats'}>
-            <h1 className={'stats_title'}>Твоя статистика:</h1>
-            <p className={'stats_percent'}>{`${(statVal * 10).toFixed(1)}%`}</p>
+            <h1 className={'stats_title'}>Statistic</h1>
+            <DonutChart statistic={parseFloat(statistic)} />
         </div>
     )
 }

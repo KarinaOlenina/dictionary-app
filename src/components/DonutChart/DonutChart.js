@@ -46,6 +46,7 @@ const DonutChart = ({ statistic }) => {
                 .attr("dy", ".3em")
                 .text(`${(statistic)}%`)
                 .style("font-size", "40px")
+                .style("font-weight", 700)
                 .style("fill", "#FB3AFF");
 
             return () => {

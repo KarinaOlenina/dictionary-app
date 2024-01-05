@@ -19,6 +19,8 @@ The <b>"Dictionary"</b> project is an application that allows you to create pair
 
 At the end of each test, you'll receive your results.
 
+![dictionary-gif.gif](src%2Fassets%2Fdictionary-gif.gif)
+
 📊 Additionally, your total scores and results are saved, and you can review them by clicking on the "Statistics" option.
 
 ## 🛠 Getting Started

@@ -41,6 +41,11 @@ https://github.com/KarinaOlenina/dictionary-app.git
 npm install
 ```
 
+### 💻 Install JSON-Server
+```bush
+npm i json-server
+```
+
 ### 🚀 Start app:
 ```bush
 npm start
